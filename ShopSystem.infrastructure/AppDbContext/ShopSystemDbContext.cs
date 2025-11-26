@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShopSystem.Domain.Models;
-using System.Reflection;
 
 namespace ShopSystem.infrastructure.AppDbContext;
 
@@ -13,7 +12,9 @@ public class ShopSystemDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        var entityTypes = Assembly.GetExecutingAssembly()
+        var entityAssembly = typeof(Product).Assembly;
+
+        var entityTypes = entityAssembly
             .GetTypes()
             .Where(t => typeof(IBaseEntity).IsAssignableFrom(t)
                         && t.IsClass && !t.IsAbstract);
@@ -22,11 +23,7 @@ public class ShopSystemDbContext : DbContext
         {
             var entity = modelBuilder.Entity(type);
 
-            var idProperty = type.GetProperty("Id");
-            if (idProperty != null)
-            {
-                entity.HasKey("Id");
-            }
+            entity.HasKey("Id");
         }
         base.OnModelCreating(modelBuilder);
     }
