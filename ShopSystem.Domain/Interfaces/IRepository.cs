@@ -1,4 +1,4 @@
-﻿namespace ShopSystem.infrastructure.Repositories;
+﻿namespace ShopSystem.Domain.Interfaces;
 
 public interface IRepository<T> where T : class
 {

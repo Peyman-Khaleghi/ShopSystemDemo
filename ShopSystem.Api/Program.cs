@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ShopSystem.Domain.Interfaces;
 using ShopSystem.infrastructure.AppDbContext;
 using ShopSystem.infrastructure.Repositories;
 

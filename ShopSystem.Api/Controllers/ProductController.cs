@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ShopSystem.Domain.Interfaces;
 using ShopSystem.Domain.Models;
 using ShopSystem.infrastructure.Repositories;
 
@@ -38,7 +39,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, Product product)
+    public async Task<IActionResult> Update(int id, [FromBody]Product product)
     {
         if (id != product.Id) return BadRequest();
         _repository.Update(product);
