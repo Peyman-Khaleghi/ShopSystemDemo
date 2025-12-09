@@ -3,12 +3,14 @@ WORKDIR /app
 
 COPY ShopSystem.Domain/ShopSystem.Domain.csproj ./ShopSystem.Domain/
 COPY ShopSystem.infrastructure/ShopSystem.infrastructure.csproj ./ShopSystem.infrastructure/
+COPY ShopSystem.Services/ShopSystem.Services.csproj ./ShopSystem.Services/
 COPY ShopSystem.Api/ShopSystem.Api.csproj ./ShopSystem.Api/
 
 RUN dotnet restore ./ShopSystem.Api/ShopSystem.Api.csproj
 
 COPY ShopSystem.Domain ./ShopSystem.Domain
 COPY ShopSystem.infrastructure ./ShopSystem.infrastructure
+COPY ShopSystem.Services ./ShopSystem.Services
 COPY ShopSystem.Api ./ShopSystem.Api
 
 RUN dotnet publish ./ShopSystem.Api/ShopSystem.Api.csproj -c Release -o /publish /p:UseAppHost=false

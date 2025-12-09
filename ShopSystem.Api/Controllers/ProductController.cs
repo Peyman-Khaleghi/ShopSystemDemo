@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ShopSystem.Domain.Interfaces;
 using ShopSystem.Domain.Models;
-using ShopSystem.infrastructure.Repositories;
+using ShopSystem.Services;
 
 namespace ShopSystem.Api.Controllers;
 
@@ -9,49 +9,45 @@ namespace ShopSystem.Api.Controllers;
 [Route("[controller]")]
 public class ProductController : ControllerBase
 {
-    private readonly IRepository<Product> _repository;
+    private readonly IRepository<Product, int> _repository;
+    private readonly ProductService _service;
 
-    public ProductController(IRepository<Product> repository)
+    public ProductController(IRepository<Product, int> repository, ProductService service)
     {
         _repository = repository;
+        _service = service;
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IEnumerable<ProductDto>> GetAll()
     {
-        var products = await _repository.GetAllAsync();
-        return Ok(products);
+        return await _service.GetAllProductsAsync();
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> Get(int id)
+    public async Task<ProductDto> Get(int id)
     {
-        var product = await _repository.GetByIdAsync(id);
-        if (product == null) return NotFound();
-        return Ok(product);
+        return await _service.GetProductByIdAsync(id);
     }
 
     [HttpPost]
-    public async Task Create(Product product)
+    public async Task<int> Create(ProductDto product)
     {
-        await _repository.AddAsync(product);
-        await _repository.SaveChangesAsync();
+        return await _service.AddProductAsync(product);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, [FromBody]Product product)
+    public async Task<IActionResult> Update(int id, [FromBody] ProductDto product)
     {
         if (id != product.Id) return BadRequest();
-        _repository.Update(product);
-        await _repository.SaveChangesAsync();
+        await _service.UpdateProductAsync(product);
         return NoContent();
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        var product = await _repository.GetByIdAsync(id);
-        _repository.Delete(product);
+        await _repository.Delete(id);
         await _repository.SaveChangesAsync();
         return NoContent();
     }

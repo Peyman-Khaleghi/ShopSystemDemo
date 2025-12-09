@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ShopSystem.Domain.Models;
 
-public class Order : IBaseEntity, IAuditLog
+public class Order : IBaseEntity<Guid>, IAuditLog
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     public long Number { get; set; }
     public int CustomerId { get; set; }
     public int ProductId { get; set; }

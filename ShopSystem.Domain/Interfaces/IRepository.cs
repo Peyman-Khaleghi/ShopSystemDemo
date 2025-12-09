@@ -1,12 +1,14 @@
-﻿namespace ShopSystem.Domain.Interfaces;
+﻿using ShopSystem.Domain.Models;
 
-public interface IRepository<T> where T : class
+namespace ShopSystem.Domain.Interfaces;
+
+public interface IRepository<T,TId> where T : class , IBaseEntity<TId>
 {
-    Task<T> GetByIdAsync(params object[] ids);
+    Task<T> GetByIdAsync(TId id);
     Task<IEnumerable<T>> GetAllAsync();
     Task AddAsync(T entity);
     void Update(T entity);
-    void Delete(T entity);
+    Task Delete(TId id);
     IQueryable<T> Query();
     Task<int> SaveChangesAsync();
 }

@@ -7,6 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.12" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
@@ -14,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ShopSystem.Domain\ShopSystem.Domain.csproj" />
     <ProjectReference Include="..\ShopSystem.infrastructure\ShopSystem.infrastructure.csproj" />
+    <ProjectReference Include="..\ShopSystem.Services\ShopSystem.Services.csproj" />
   </ItemGroup>
 
 	<ItemGroup>

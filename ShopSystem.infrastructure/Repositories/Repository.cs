@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShopSystem.Domain.Interfaces;
+using ShopSystem.Domain.Models;
 using ShopSystem.infrastructure.AppDbContext;
 
 namespace ShopSystem.infrastructure.Repositories;
 
-public class Repository<T> : IRepository<T> where T : class
+public class Repository<T,TId> : IRepository<T,TId> where T : class , IBaseEntity<TId>
 {
     private readonly ShopSystemDbContext _context;
     private readonly DbSet<T> _db;
@@ -15,9 +16,9 @@ public class Repository<T> : IRepository<T> where T : class
         _db = context.Set<T>();
     }
 
-    public async Task<T> GetByIdAsync(params object[] ids)
+    public async Task<T> GetByIdAsync(TId id)
     {
-        return await _db.FindAsync(ids);
+        return await _db.FindAsync(id);
     }
 
     public async Task<IEnumerable<T>> GetAllAsync()
@@ -35,8 +36,9 @@ public class Repository<T> : IRepository<T> where T : class
         _db.Update(entity);
     }
 
-    public void Delete(T entity)
+    public async Task Delete(TId id)
     {
+        var entity =await GetByIdAsync(id);
         _db.Remove(entity);
     }
 

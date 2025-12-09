@@ -16,8 +16,7 @@ public class ShopSystemDbContext : DbContext
 
         var entityTypes = entityAssembly
             .GetTypes()
-            .Where(t => typeof(IBaseEntity).IsAssignableFrom(t)
-                        && t.IsClass && !t.IsAbstract);
+            .Where(t => t.IsClass && !t.IsAbstract && t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IBaseEntity<>)));
 
         foreach (var type in entityTypes)
         {

@@ -1,8 +1,8 @@
 ﻿namespace ShopSystem.Domain.Models;
 
-public interface IBaseEntity
+public interface IBaseEntity<TId>
 {
-    public int Id { get; set; }
+    public TId Id { get; set; }
 }
 
 public interface IAuditLog

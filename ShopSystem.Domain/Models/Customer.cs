@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ShopSystem.Domain.Models;
 
-public class Customer : IBaseEntity, IAuditLog
+public class Customer : IBaseEntity<int>, IAuditLog
 {
     public int Id { get; set; }
     public string FullName { get; set; }
