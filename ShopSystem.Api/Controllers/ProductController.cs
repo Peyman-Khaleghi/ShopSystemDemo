@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ShopSystem.Domain.Interfaces;
 using ShopSystem.Domain.Models;
+using ShopSystem.Infrastructure;
 using ShopSystem.Services;
 
 namespace ShopSystem.Api.Controllers;

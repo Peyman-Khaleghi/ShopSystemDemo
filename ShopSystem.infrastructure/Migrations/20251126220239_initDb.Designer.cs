@@ -2,14 +2,11 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ShopSystem.infrastructure.AppDbContext;
 
 #nullable disable
 
-namespace ShopSystem.infrastructure.Migrations
+namespace ShopSystem.Infrastructure.Migrations
 {
     [DbContext(typeof(ShopSystemDbContext))]
     [Migration("20251126220239_initDb")]

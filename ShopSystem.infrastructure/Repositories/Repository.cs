@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ShopSystem.Domain.Interfaces;
 using ShopSystem.Domain.Models;
-using ShopSystem.infrastructure.AppDbContext;
 
-namespace ShopSystem.infrastructure.Repositories;
+namespace ShopSystem.Infrastructure;
 
 public class Repository<T,TId> : IRepository<T,TId> where T : class , IBaseEntity<TId>
 {

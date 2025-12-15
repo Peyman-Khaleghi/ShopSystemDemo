@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
-using ShopSystem.Domain.Interfaces;
 using ShopSystem.Domain.Models;
+using ShopSystem.Infrastructure;
 
 namespace ShopSystem.Services;
 

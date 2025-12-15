@@ -1,6 +1,5 @@
-﻿using ShopSystem.Domain.Interfaces;
-using ShopSystem.Domain.Models;
-using ShopSystem.infrastructure.Repositories;
+﻿using ShopSystem.Domain.Models;
+using ShopSystem.Infrastructure;
 using ShopSystem.Services;
 using System.Reflection;
 

@@ -1,10 +1,10 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using ShopSystem.Api.Extentions;
-using ShopSystem.infrastructure.AppDbContext;
 using System.Reflection;
 using FluentValidation.AspNetCore;
 using ShopSystem.Services.Validations;
+using ShopSystem.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

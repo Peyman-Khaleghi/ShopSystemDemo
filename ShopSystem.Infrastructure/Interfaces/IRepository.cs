@@ -1,6 +1,6 @@
 ﻿using ShopSystem.Domain.Models;
 
-namespace ShopSystem.Domain.Interfaces;
+namespace ShopSystem.Infrastructure;
 
 public interface IRepository<T,TId> where T : class , IBaseEntity<TId>
 {

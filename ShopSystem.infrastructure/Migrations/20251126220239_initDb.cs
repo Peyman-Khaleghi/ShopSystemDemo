@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace ShopSystem.infrastructure.Migrations
+namespace ShopSystem.Infrastructure.Migrations
 {
     /// <inheritdoc />
     public partial class initDb : Migration

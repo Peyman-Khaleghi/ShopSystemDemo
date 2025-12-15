@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopSystem.Api", "ShopSyste
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopSystem.Domain", "ShopSystem.Domain\ShopSystem.Domain.csproj", "{0C3BDCFA-2F35-4B7E-81E2-9BACD2019DEB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopSystem.infrastructure", "ShopSystem.infrastructure\ShopSystem.infrastructure.csproj", "{828CBFCD-7809-44B2-85C6-F7183ACEC006}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopSystem.Infrastructure", "ShopSystem.infrastructure\ShopSystem.Infrastructure.csproj", "{828CBFCD-7809-44B2-85C6-F7183ACEC006}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F3D0611-24D0-4BF8-A412-27176FCA7727}"
 	ProjectSection(SolutionItems) = preProject

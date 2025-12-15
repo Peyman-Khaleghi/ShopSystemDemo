@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShopSystem.Domain.Models;
 
-namespace ShopSystem.infrastructure.AppDbContext;
+namespace ShopSystem.Infrastructure;
 
 public class ShopSystemDbContext : DbContext
 {
