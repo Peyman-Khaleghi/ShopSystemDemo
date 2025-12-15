@@ -1,9 +1,9 @@
 ﻿namespace ShopSystem.Services;
 
-public class ProductDto
+public class ProductItem
 {
     public int Id { get; init; }
-    public int CategoryId { get; init; }
+    public string CategoryName { get; init; }
     public string Name { get; init; }
     public string BrandName { get; init; }
     public string Color { get; init; }

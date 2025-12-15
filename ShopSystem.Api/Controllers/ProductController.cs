@@ -9,46 +9,43 @@ namespace ShopSystem.Api.Controllers;
 [Route("[controller]")]
 public class ProductController : ControllerBase
 {
-    private readonly IRepository<Product, int> _repository;
     private readonly ProductService _service;
 
     public ProductController(IRepository<Product, int> repository, ProductService service)
     {
-        _repository = repository;
         _service = service;
     }
 
     [HttpGet]
-    public async Task<IEnumerable<ProductDto>> GetAll()
+    public async Task<IEnumerable<ProductItem>> GetAll()
     {
         return await _service.GetAllProductsAsync();
     }
 
     [HttpGet("{id}")]
-    public async Task<ProductDto> Get(int id)
+    public async Task<ProductOutput> Get(int id)
     {
         return await _service.GetProductByIdAsync(id);
     }
 
     [HttpPost]
-    public async Task<int> Create(ProductDto product)
+    public async Task<int> Create(ProductInput product)
     {
         return await _service.AddProductAsync(product);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(int id, [FromBody] ProductDto product)
+    public async Task<IActionResult> Update(int id, [FromBody] ProductUpdate product)
     {
-        if (id != product.Id) return BadRequest();
-        await _service.UpdateProductAsync(product);
+        //if (id != product.Id) return BadRequest();
+        await _service.UpdateProductAsync(id,product);
         return NoContent();
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {
-        await _repository.Delete(id);
-        await _repository.SaveChangesAsync();
+        await _service.Delete(id);
         return NoContent();
     }
 
