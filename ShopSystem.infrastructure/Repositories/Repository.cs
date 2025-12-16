@@ -44,9 +44,4 @@ public class Repository<T,TId> : IRepository<T,TId> where T : class , IBaseEntit
     {
         return _db.AsQueryable();
     }
-
-    public async Task<int> SaveChangesAsync()
-    {
-        return await _context.SaveChangesAsync();
-    }
 }

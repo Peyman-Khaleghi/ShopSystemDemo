@@ -35,12 +35,12 @@ public static class ServiceCollectionExtentions
 
     public static IServiceCollection AddAutoServices(this IServiceCollection services)
     {
-        Assembly servicesAssembly = typeof(IApplicationServices).Assembly;
+        Assembly servicesAssembly = typeof(IApplicationServiceAutoRegister).Assembly;
 
         var concreteServiceTypes = servicesAssembly.GetTypes()
             .Where(t => t.IsClass
                      && !t.IsAbstract
-                     && t.GetInterfaces().Contains(typeof(IApplicationServices)));
+                     && t.GetInterfaces().Contains(typeof(IApplicationServiceAutoRegister)));
 
         foreach (var serviceType in concreteServiceTypes)
         {

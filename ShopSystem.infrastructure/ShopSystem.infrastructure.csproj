@@ -14,4 +14,8 @@
     <ProjectReference Include="..\ShopSystem.Domain\ShopSystem.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="UnitOfWork\Interface\" />
+  </ItemGroup>
+
 </Project>

@@ -10,5 +10,4 @@ public interface IRepository<T,TId> where T : class , IBaseEntity<TId>
     void Update(T entity);
     Task Delete(TId id);
     IQueryable<T> Query();
-    Task<int> SaveChangesAsync();
 }
