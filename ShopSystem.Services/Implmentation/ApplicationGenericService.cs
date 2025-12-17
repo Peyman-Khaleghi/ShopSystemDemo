@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using ShopSystem.Domain.Models;
 using ShopSystem.Infrastructure;
 using ShopSystem.Services;
+using ShopSystem.Services.Exceptions;
 
 public class ApplicationGenericServices<TEntity, TId, TItem, TOutput, TInput, TUpdate> :
     IApplicationGenericServices<TEntity, TId, TItem, TOutput, TInput, TUpdate>
@@ -28,7 +29,7 @@ public class ApplicationGenericServices<TEntity, TId, TItem, TOutput, TInput, TU
         TEntity entity = await _repository.GetByIdAsync(id);
 
         if (entity == null)
-            throw new Exception($"Entity with ID {id} not found.");
+            throw new NotFoundException<TId>(id);
 
         return _mapper.Map<TOutput>(entity);
     }
@@ -55,7 +56,7 @@ public class ApplicationGenericServices<TEntity, TId, TItem, TOutput, TInput, TU
 
         if (entityToUpdate == null)
         {
-            throw new Exception($"Entity with ID {id} not found.");
+            throw new NotFoundException<TId>(id);
         }
 
         _mapper.Map(update, entityToUpdate);

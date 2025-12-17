@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using ShopSystem.Domain.Models;
 using ShopSystem.Infrastructure;
+using ShopSystem.Services.Exceptions;
 
 namespace ShopSystem.Services;
 
@@ -23,6 +24,8 @@ public class OrderService : ApplicationGenericServices<Order, Guid, OrderItem, O
         await _repository.AddAsync(order);
         var productRepo = _unitOfWork.GetRepository<Product, int>();
         var product = await productRepo.GetByIdAsync(input.ProductId);
+        if (product.Count < 1)
+            throw new BusinessRuleException("Product count is not enough!");
         product.Count -= 1;
         await _unitOfWork.CompleteAsync();
     }

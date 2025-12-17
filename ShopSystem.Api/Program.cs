@@ -6,6 +6,7 @@ using FluentValidation.AspNetCore;
 using ShopSystem.Infrastructure;
 using ShopSystem.Services.Validations;
 using ShopSystem.Services;
+using ShopSystem.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,7 +50,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseMiddleware<GlobalExceptionMiddleware>();
 app.MapControllers();
 
 app.Run();

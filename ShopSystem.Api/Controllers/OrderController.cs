@@ -14,10 +14,10 @@ public class OrderController : ShopSystemDemoBaseController<Order,Guid,OrderItem
     }
 
     [HttpPost("updateInventory")]
-    public async Task<ActionResult> UpdateInventory([FromBody] OrderInput input)
+    public async Task<ApiResponse<NoContent>> UpdateInventory([FromBody] OrderInput input)
     {
         var orderService = (OrderService)_service;
         await orderService.AddOrder(input);
-        return Ok();
+        return ApiResponse<NoContent>.Ok(ShopSystem.Api.NoContent.Value);
     }
 }
